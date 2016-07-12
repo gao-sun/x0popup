@@ -1,11 +1,12 @@
 {
   "name": "x0popup",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An alternative to original alert, confirm and prompt",
   "main": "src/js/x0popup.js",
   "homepage": "http://gao-sun.github.io/x0popup",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-header": "^1.8.7",
     "gulp-minify-css": "^1.2.4",

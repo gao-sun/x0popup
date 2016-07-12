@@ -48,7 +48,6 @@ x0popup = x0p = function() {
 		(arguments[1] != undefined) && (callback = arguments[1]);
 	}
 
-	// TODO: overlay transition, input focus
 	// Start construction
 	/**
 	*	Configuration Logic
@@ -100,7 +99,7 @@ x0popup = x0p = function() {
 		str += 'height: ' + config.height + ';';
 		(config.maxWidth != null) && (str += 'max-width: ' + config.maxWidth + ';');
 		(config.maxHeight != null) && (str += 'max-height: ' + config.maxHeight + ';');
-		(config.animation) && (str += 'animation-name: x0p' + config.animationType + ';');
+		(config.animation) && (str += '-webkit-animation-name: x0p' + config.animationType + '; animation-name: x0p' + config.animationType + ';');
 		(!config.overlay) && (str += 'outline: 1px solid #ddd');
 		return str;
 	}

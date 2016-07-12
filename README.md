@@ -1,10 +1,10 @@
 # x0popup
 
-![Confirm Popup](https://raw.githubusercontent.com/gao-sun/x0popup/master/demo.gif)
+![Confirm Popup](https://gao-sun.github.io/x0popup/image/demo.gif)
 
 An alternative to original alert, confirm and prompt.
 
-**Light** - Only 3.4KB (js + css, after gzipped), no dependency.
+**Light** - Less than 4KB (js + css, after gzipped), no dependency.
 
 **Graceful** - Flat design, suits for all devices.
 

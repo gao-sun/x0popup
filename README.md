@@ -41,6 +41,12 @@ x0p('Message', 'Hello world!', 'info');
 
 You can see full tutorial and document on [x0popup](http://gao-sun.github.io/x0popup).
 
+## To-do
+
+1.Key Response
+
+2.Promise
+
 ## Contribution
 
 Please leave an issue if you find any bugs, I will fix it ASAP.

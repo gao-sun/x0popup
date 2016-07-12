@@ -12,27 +12,27 @@ An alternative to original alert, confirm and prompt.
 
 ## Get x0popup
 
-1. Install via npm
+1.Install via npm
 ```bash
 npm install x0popup
 ```
 
-2. Install via bower
+2.Install via bower
 ```bash
 bower install x0popup
 ```
 
-3. Download files manually from /dist
+3.Download files manually from /dist
 
 ## Get Started
 
-1. Reference the x0popup files:
+1.Reference the x0popup files:
 ```html
 <script src="path/to/js/x0popup.min.js"></script>
 <link rel="stylesheet" href="path/to/css/x0popup.min.css">
 ```
 
-2. Test x0popup in javascript:
+2.Test x0popup in javascript:
 ```javascript
 x0p('Message', 'Hello world!', 'info');
 ```

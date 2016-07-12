@@ -1,0 +1,169 @@
+/* Theme Default */
+.x0p.default .icon-wrapper {
+	position: relative;
+	width: 35%;
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+	/*text-align: center;*/
+}
+
+.x0p.default .text-wrapper {
+	position: relative;
+	width: 65%;
+	height: 100%;
+	display: inline-block;
+	margin: 0 auto;
+	vertical-align: top;
+	/*text-align: center;*/
+}
+
+.x0p.default .text-pure-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.x0p.default .text-anchor {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	transform: translateY(-50%);
+}
+
+.x0p.default .content {
+	width: 100%;
+	height: 80%;
+	height: calc(100% - 40px);
+}
+
+.x0p.default.no-button .content {
+	height: 100%;
+}
+
+.x0p.default .buttons {
+	width: 100%;
+	height: 40px;
+	position: absolute;
+	bottom: 0;
+	background-color: #eee;
+}
+
+.x0p.default .text-wrapper .title,
+.x0p.default .text-wrapper .text,
+.x0p.default .text-wrapper .input {
+	padding-left: 0;
+}
+
+.x0p.default .title {
+	padding: 0 25px;
+	box-sizing: border-box;
+	font-size: 28px;
+	font-weight: bold;
+	color: #333;
+}
+
+.x0p.default .text {
+	margin-top: 5%;
+	padding: 0 25px;
+	font-size: 18px;
+	color: #777;
+}
+
+.x0p.default .error {
+	margin-top: 1px;
+	margin-right: 30px;
+	padding: 5px 10px;
+	font-size: 13px;
+	background-color: #fe9999;
+	color: #fcfcfc;
+}
+
+.x0p.default .input {
+	padding: 0 30px;
+}
+
+.x0p.default input[type='text'],
+.x0p.default input[type='password'] {
+	margin-top: 7%;
+	padding: 8px 10px;
+	outline: none;
+	background-color: #f9f9f9;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #aaa;
+	/*border-radius: 5px;*/
+	font-size: 18px;
+	box-sizing: border-box;
+	width: 100%;
+	color: #aaa;
+	transition: all ease .3s;
+}
+
+.x0p.default input[type='text']:focus,
+.x0p.default input[type='password']:focus {
+	border-color: #5080DF;
+	color: #5080DF;
+}
+
+.x0p.default .button {
+	display: inline-block;
+	text-align: center;
+	padding: 12px 0;
+	font-size: 16px;
+	vertical-align: bottom;
+	margin-bottom: 0;
+}
+
+.x0p.default .button:hover {
+	cursor: pointer;
+}
+
+.x0p.default .button-ok {
+	background-color: #60BF80;
+	color: #fefefe;
+}
+
+.x0p.default .button-ok:hover {
+	background-color: #50AF70;
+}
+
+.x0p.default .button-cancel {
+	background-color: #eee;
+	color: #666;
+}
+
+.x0p.default .button-cancel:hover {
+	background-color: #e3e3e3;
+}
+
+.x0p.default .button-warning {
+	background-color: #F29F3F;
+	color: #fefefe;
+}
+
+.x0p.default .button-warning:hover {
+	background-color: #E28F2F;
+}
+
+.x0p.default .button-info {
+	background-color: #6090EF;
+	color: #fefefe;
+}
+
+.x0p.default .button-info:hover {
+	background-color: #5080DF;
+}
+
+.x0p.default .button-error {
+	background-color: #EF6080;
+	color: #fefefe;
+}
+
+.x0p.default .button-error:hover {
+	background-color: #DF5070;
+}
+
+/* End Theme Default */

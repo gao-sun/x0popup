@@ -1,0 +1,24 @@
+{
+  "name": "x0popup",
+  "description": "An alternative to original alert, confirm and prompt",
+  "main": "src/js/x0popup.js",
+  "authors": [
+    "Gao Sun"
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "x0popup",
+    "popup"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "homepage": "http://gao-sun.github.io/x0popup",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

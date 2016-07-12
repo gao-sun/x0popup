@@ -10,6 +10,20 @@ An alternative to original alert, confirm and prompt.
 
 **Customizable** - Allow user-defined themes.
 
+## Get x0popup
+
+1. Install via npm
+```bash
+npm install x0popup
+```
+
+2. Install via bower
+```bash
+bower install x0popup
+```
+
+3. Download files manually from /dist
+
 ## Get Started
 
 1. Reference the x0popup files:
@@ -30,4 +44,5 @@ You can see full tutorial and document on [x0popup](http://gao-sun.github.io/x0p
 ## Contribution
 
 Please leave an issue if you find any bugs, I will fix it ASAP.
+
 If you have any new ideas, feel free to make a pull request and wait for accpetance.

@@ -43,9 +43,7 @@ You can see full tutorial and document on [x0popup](http://gao-sun.github.io/x0p
 
 ## To-do
 
-1.Key Response
-
-2.Promise
+1.Promise
 
 ## Contribution
 

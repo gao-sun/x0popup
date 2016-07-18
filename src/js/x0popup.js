@@ -24,7 +24,8 @@ var x0pDefaultConfig = {
 	html: false,
 	animation: true,
 	animationType: 'pop',
-	overlayAnimation: true
+	overlayAnimation: true,
+	keyResponse: true
 };
 
 x0popup = x0p = function() {
@@ -82,12 +83,16 @@ x0popup = x0p = function() {
 	var body = document.getElementsByTagName('body');
 	body[0].insertAdjacentHTML('beforeend', str);
 
+	// Add Handlers
+	addButtonHandlers();
+	// Use keydown because some special keys do not trigger keypress in Chrome
+	(config.keyResponse == true) && (document.addEventListener('keydown', x0pKeyHandler));
+
 	// Auto Focus Input DOM
 	var inputDOM = document.getElementById('x0p-input');
 	(inputType != null) && (inputDOM.focus());
 
-	addButtonHandlers();
-
+	// Auto Close Timer
 	(config.autoClose != null) && (timeoutFunc = setTimeout(function() {
 		closeAndTriggerCallback('timeout');
 	}, config.autoClose));
@@ -103,6 +108,7 @@ x0popup = x0p = function() {
 		(!config.overlay) && (str += 'outline: 1px solid #ddd');
 		return str;
 	}
+
 	function generateIcon() {
 		var str = '';
 		var iconType = (config.icon == null ? config.type : config.icon);
@@ -138,16 +144,19 @@ x0popup = x0p = function() {
 				(config.showCancelButton != false && (config.type == 'warning' || config.type == 'input'))
 			) {
 				buttons.push({
-					type: 'cancel'
+					type: 'cancel',
+					key: 27
 				});
 			}
 			if(config.type == 'text' || config.type == 'input') {
 				buttons.push({
-					type: 'info'
+					type: 'info',
+					key: 13
 				});
 			} else {
 				buttons.push({
-					type: config.type
+					type: config.type,
+					key: 13
 				});
 			}
 		}
@@ -161,7 +170,7 @@ x0popup = x0p = function() {
 		str += '<div id="x0p-buttons" class="buttons">';
 		for(var i = 0; i < buttons.length; ++ i) {
 			var button = buttons[i];
-			str += '<div id="x0p-button-' + i + '" class="button button-' + button.type + '" style="' + buttonWidth + '">' + generateButtonText(button) + '</div>';
+			str += '<button id="x0p-button-' + i + '" class="button button-' + button.type + '" style="' + buttonWidth + '">' + generateButtonText(button) + '</button>';
 		}
 		str += '</div>';
 		return str;
@@ -173,6 +182,7 @@ x0popup = x0p = function() {
 	}
 
 	function close() {
+		document.removeEventListener('keydown', x0pKeyHandler);
 		removeElementById('x0popup');
 		removeElementById('x0p-overlay');
 	}
@@ -190,6 +200,18 @@ x0popup = x0p = function() {
 					closeAndTriggerCallback(buttonType, showLoading);
 				});
 			}) (buttons[i].type, buttons[i].showLoading);
+		}
+	}
+
+	function x0pKeyHandler(event) {
+		var keyCode = event.keyCode;
+		for(var i = 0; i < buttons.length; ++ i) {
+			if(keyCode == buttons[i].key) {
+				var buttonEl = document.getElementById('x0p-button-' + i);
+
+				event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+				buttonEl && buttonEl.click();
+			}
 		}
 	}
 

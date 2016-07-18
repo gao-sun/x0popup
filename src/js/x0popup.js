@@ -170,7 +170,7 @@ x0popup = x0p = function() {
 		str += '<div id="x0p-buttons" class="buttons">';
 		for(var i = 0; i < buttons.length; ++ i) {
 			var button = buttons[i];
-			str += '<button id="x0p-button-' + i + '" class="button button-' + button.type + '" style="' + buttonWidth + '">' + generateButtonText(button) + '</button>';
+			str += '<div id="x0p-button-' + i + '" class="button button-' + button.type + '" style="' + buttonWidth + '">' + generateButtonText(button) + '</div>';
 		}
 		str += '</div>';
 		return str;

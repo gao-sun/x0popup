@@ -113,14 +113,8 @@
 	text-align: center;
 	padding: 12px 0;
 	font-size: 16px;
-	vertical-align: center;
+	vertical-align: bottom;
 	margin-bottom: 0;
-	border: none;
-	box-sizing: border-box;
-}
-
-.x0p.default .button:focus {
-	outline: none;
 }
 
 .x0p.default .button:hover {

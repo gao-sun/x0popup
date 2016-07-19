@@ -122,7 +122,7 @@
 	outline-offset: -1px;
 }
 
-.x0p.default .button:focus {
+.x0p.default .button-outline:focus {
 	outline-width: 1px;
 	animation: x0pButtonOutline .3s ease;
 }

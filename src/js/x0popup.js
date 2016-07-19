@@ -25,7 +25,8 @@ var x0pDefaultConfig = {
 	animation: true,
 	animationType: 'pop',
 	overlayAnimation: true,
-	keyResponse: false
+	keyResponse: true,
+	showButtonOutline: false
 };
 
 x0popup = x0p = function() {
@@ -167,11 +168,12 @@ x0popup = x0p = function() {
 		var buttonType = (config.keyResponse == true) ? 'button' : 'div';
 		var buttonCount = buttons.length;
 		var buttonWidth = 'width: ' + (100.0 / buttonCount).toFixed(2) + '%; width: calc(100% / ' + buttonCount + ');';
+		var buttonOutline = (config.showButtonOutline == true) ? ' button-outline' : '';
 
 		str += '<div id="x0p-buttons" class="buttons">';
 		for(var i = 0; i < buttons.length; ++ i) {
 			var button = buttons[i];
-			str += '<' + buttonType + ' id="x0p-button-' + i + '" class="button button-' + button.type + '" style="' + buttonWidth + '">' + generateButtonText(button) + '</' + buttonType + '>';
+			str += '<' + buttonType + ' id="x0p-button-' + i + '" class="button button-' + button.type + buttonOutline + '" style="' + buttonWidth + '">' + generateButtonText(button) + '</' + buttonType + '>';
 		}
 		str += '</div>';
 		return str;
@@ -224,6 +226,10 @@ x0popup = x0p = function() {
 
 			// Auto focus default button
 			document.getElementById('x0p-button-' + defaultIndex).focus();
+		}
+		else
+		{
+			document.activeElement.blur();
 		}
 	}
 

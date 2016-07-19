@@ -25,7 +25,7 @@ var x0pDefaultConfig = {
 	animation: true,
 	animationType: 'pop',
 	overlayAnimation: true,
-	keyResponse: true
+	keyResponse: false
 };
 
 x0popup = x0p = function() {
@@ -164,13 +164,14 @@ x0popup = x0p = function() {
 		if(buttons.length == 0)
 			return '';
 
+		var buttonType = (config.keyResponse == true) ? 'button' : 'div';
 		var buttonCount = buttons.length;
 		var buttonWidth = 'width: ' + (100.0 / buttonCount).toFixed(2) + '%; width: calc(100% / ' + buttonCount + ');';
 
 		str += '<div id="x0p-buttons" class="buttons">';
 		for(var i = 0; i < buttons.length; ++ i) {
 			var button = buttons[i];
-			str += '<div id="x0p-button-' + i + '" class="button button-' + button.type + '" style="' + buttonWidth + '">' + generateButtonText(button) + '</div>';
+			str += '<' + buttonType + ' id="x0p-button-' + i + '" class="button button-' + button.type + '" style="' + buttonWidth + '">' + generateButtonText(button) + '</' + buttonType + '>';
 		}
 		str += '</div>';
 		return str;
@@ -193,6 +194,8 @@ x0popup = x0p = function() {
 	}
 
 	function addButtonHandlers() {
+		var defaultIndex = buttons.length - 1;
+
 		for(var i = 0; i < buttons.length; ++ i) {
 			var buttonEl = document.getElementById('x0p-button-' + i);
 			(function(buttonType, showLoading) {
@@ -200,6 +203,27 @@ x0popup = x0p = function() {
 					closeAndTriggerCallback(buttonType, showLoading);
 				});
 			}) (buttons[i].type, buttons[i].showLoading);
+			// Prevent focus
+			buttonEl.addEventListener('mousedown', function(event) {
+				event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+			});
+			// Update default index
+			(buttons[i].default == true) && (defaultIndex = i);
+		}
+		
+		if(config.keyResponse && buttons.length > 0) {
+			var lastButton = document.getElementById('x0p-button-' + (buttons.length - 1));
+
+			// Loop on tabbing
+			lastButton.addEventListener('keydown', function(event) {
+				if(event.keyCode == 9) {
+					document.getElementById('x0p-button-0').focus();
+					event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+				}
+			});
+
+			// Auto focus default button
+			document.getElementById('x0p-button-' + defaultIndex).focus();
 		}
 	}
 

@@ -113,16 +113,32 @@
 	text-align: center;
 	padding: 12px 0;
 	font-size: 16px;
-	vertical-align: bottom;
+	vertical-align: center;
 	margin-bottom: 0;
+	box-sizing: border-box;
+	border: 0;
+	outline-width: 0;
+	outline-style: solid;
+	outline-offset: -1px;
+}
+
+.x0p.default .button:focus {
+	outline-width: 1px;
+	animation: x0pButtonOutline .3s ease;
 }
 
 .x0p.default .button:hover {
 	cursor: pointer;
 }
 
+@keyframes x0pButtonOutline {
+	from { outline-offset: 7px; }
+	to { outline-offset: -1px; }
+}
+
 .x0p.default .button-ok {
 	background-color: #60BF80;
+	outline-color: #207F40;
 	color: #fefefe;
 }
 
@@ -132,6 +148,7 @@
 
 .x0p.default .button-cancel {
 	background-color: #eee;
+	outline-color: #aaa;
 	color: #666;
 }
 
@@ -141,6 +158,7 @@
 
 .x0p.default .button-warning {
 	background-color: #F29F3F;
+	outline-color: #B25F00;
 	color: #fefefe;
 }
 
@@ -150,6 +168,7 @@
 
 .x0p.default .button-info {
 	background-color: #6090EF;
+	outline-color: #2050AF;
 	color: #fefefe;
 }
 
@@ -159,6 +178,7 @@
 
 .x0p.default .button-error {
 	background-color: #EF6080;
+	outline-color: #AF2040;
 	color: #fefefe;
 }
 

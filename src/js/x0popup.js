@@ -315,3 +315,7 @@ x0popup.setDefault = x0p.setDefault = function() {
 		x0pDefaultConfig[key] = config[key];
 	}
 };
+
+if (typeof module === 'object') {
+	module.exports = x0popup;
+}

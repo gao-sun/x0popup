@@ -26,7 +26,11 @@ var x0pDefaultConfig = {
 	animationType: 'pop',
 	overlayAnimation: true,
 	keyResponse: true,
-	showButtonOutline: false
+	showButtonOutline: false,
+	buttonTextOk: 'OK',
+	buttonTextConfirm: 'Confirm',
+	buttonTextCancel: 'Cancel',
+	buttonTextDefault: 'Button'
 };
 
 x0popup = x0p = function() {
@@ -278,13 +282,14 @@ x0popup = x0p = function() {
 			case 'ok':
 			case 'error':
 			case 'info':
-				return 'OK';
+				return x0pDefaultConfig.buttonTextOk;
 			case 'warning':
-				return 'Confirm';
+				return x0pDefaultConfig.buttonTextConfirm;
 			case 'cancel':
-				return 'Cancel';
+				return x0pDefaultConfig.buttonTextCancel;
+			default:
+				return x0pDefaultConfig.buttonTextDefault;
 		}
-		return 'Button';
 	}
 
 	function generateInputColor() {

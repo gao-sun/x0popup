@@ -4,7 +4,7 @@
 
 An alternative to original alert, confirm and prompt.
 
-**Light** - Less than 4KB (js + css, after gzipped), no dependency.
+**Light** - Just 4KB (js + css, after gzipped), no dependency.
 
 **Graceful** - Flat design, suits for all devices.
 
@@ -44,8 +44,9 @@ You can see full tutorial and document on [x0popup](http://gao-sun.github.io/x0p
 ## To-do
 
 1.Promise
+2.TypeScript definitions
 
-## Contribution
+## Contributing
 
 Please leave an issue if you find any bugs, I will fix it ASAP.
 

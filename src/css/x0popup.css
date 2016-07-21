@@ -270,3 +270,8 @@
 	80% { height: 0; top: 22%; left: 76%; }
 	to { height: 80%; top: 10%; left: 50%; }
 }
+
+/* No Scroll */
+.noscroll {
+	overflow: hidden;
+}

@@ -38,6 +38,7 @@ x0popup = x0p = function() {
 	var callback = null;
 	var config = JSON.parse(JSON.stringify(x0pDefaultConfig));
 	var buttons, timeoutFunc = null;
+	var body = document.body;
 
 	// Overwrite default config
 	if(typeof(personlization) == 'string') { // easy calling
@@ -85,8 +86,10 @@ x0popup = x0p = function() {
 	// Close Previous Popup
 	close();
 	// Append to Body
-	var body = document.getElementsByTagName('body');
-	body[0].insertAdjacentHTML('beforeend', str);
+	body.insertAdjacentHTML('beforeend', str);
+
+	// No Scroll
+	body.classList.add('noscroll');
 
 	// Add Handlers
 	addButtonHandlers();
@@ -189,6 +192,7 @@ x0popup = x0p = function() {
 	}
 
 	function close() {
+		body.classList.remove('noscroll');
 		document.removeEventListener('keydown', x0pKeyHandler);
 		removeElementById('x0popup');
 		removeElementById('x0p-overlay');

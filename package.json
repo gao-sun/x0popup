@@ -1,6 +1,6 @@
 {
   "name": "x0popup",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "An alternative to original alert, confirm and prompt",
   "main": "src/js/x0popup.js",
   "homepage": "http://gao-sun.github.io/x0popup",

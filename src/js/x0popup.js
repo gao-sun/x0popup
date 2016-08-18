@@ -73,10 +73,10 @@ x0popup = x0p = function() {
 	str += '<div id="x0popup" class="x0p ' + config.theme + (config.animation == false ? ' no-animation' : '') + (buttons.length == 0 ? ' no-button' : '') + '" style="' + generateStyle() + '">';
 		str += '<div class="content">';
 			str += textOnly ? '<div class="text-pure-wrapper">' : generateIcon() + '<div class="text-wrapper">';
-				str += '<div id="x0p-text-anchor" class="text-anchor">';
+				str += '<div class="text-anchor">';
 					str += '<div class="title">' + config.title + '</div>';
 					(config.text != null) && (str += '<div class="text">' + (config.html ? config.text : htmlEncode(config.text)) + '</div>');
-					(inputType != null) && (str += '<div class="input">' + generateInputColor() + '<input id="x0p-input" type="' + inputType + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '"></div>');
+					(inputType != null) && (str += '<div id="x0p-input-anchor" class="input">' + generateInputColor() + '<input id="x0p-input" type="' + inputType + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '"></div>');
 				str += '</div>';
 			str += '</div>';
 		str += '</div>';
@@ -264,7 +264,7 @@ x0popup = x0p = function() {
 			var msg = config.inputValidator(buttonType, inputDOM.value);
 			if(msg != null) {
 				removeElementById('x0p-input-error');
-				var anchor = document.getElementById('x0p-text-anchor');
+				var anchor = document.getElementById('x0p-input-anchor');
 				anchor.insertAdjacentHTML('beforeend', '<div id="x0p-input-error" class="error">' + msg + '</div>');
 				return;
 			}

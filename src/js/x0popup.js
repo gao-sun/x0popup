@@ -68,42 +68,50 @@ x0popup = x0p = function() {
 	var inputValue = (config.inputValue == null ? '' : config.inputValue);
 	var inputPlaceholder = (config.inputPlaceholder == null ? '' : config.inputPlaceholder);
 	var buttonStr = generateButtons();
+	var promiseResolve, promiseReject;
 
-	(config.overlay) && (str += '<div id="x0p-overlay" class="x0p-overlay' + ((!config.animation || !config.overlayAnimation) ? ' no-animation' : '') + '"></div>');
-	str += '<div id="x0popup" class="x0p ' + config.theme + (config.animation == false ? ' no-animation' : '') + (buttons.length == 0 ? ' no-button' : '') + '" style="' + generateStyle() + '">';
-		str += '<div class="content">';
-			str += textOnly ? '<div class="text-pure-wrapper">' : generateIcon() + '<div class="text-wrapper">';
-				str += '<div class="text-anchor">';
-					str += '<div class="title">' + config.title + '</div>';
-					(config.text != null) && (str += '<div class="text">' + (config.html ? config.text : htmlEncode(config.text)) + '</div>');
-					(inputType != null) && (str += '<div id="x0p-input-anchor" class="input">' + generateInputColor() + '<input id="x0p-input" type="' + inputType + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '"></div>');
+	var pop = new Promise(function(resolve, reject) {
+		promiseResolve = resolve;
+		promiseReject = reject;
+
+		(config.overlay) && (str += '<div id="x0p-overlay" class="x0p-overlay' + ((!config.animation || !config.overlayAnimation) ? ' no-animation' : '') + '"></div>');
+		str += '<div id="x0popup" class="x0p ' + config.theme + (config.animation == false ? ' no-animation' : '') + (buttons.length == 0 ? ' no-button' : '') + '" style="' + generateStyle() + '">';
+			str += '<div class="content">';
+				str += textOnly ? '<div class="text-pure-wrapper">' : generateIcon() + '<div class="text-wrapper">';
+					str += '<div class="text-anchor">';
+						str += '<div class="title">' + config.title + '</div>';
+						(config.text != null) && (str += '<div class="text">' + (config.html ? config.text : htmlEncode(config.text)) + '</div>');
+						(inputType != null) && (str += '<div id="x0p-input-anchor" class="input">' + generateInputColor() + '<input id="x0p-input" type="' + inputType + '" placeholder="' + inputPlaceholder + '" value="' + inputValue + '"></div>');
+					str += '</div>';
 				str += '</div>';
 			str += '</div>';
+			str += buttonStr;
 		str += '</div>';
-		str += buttonStr;
-	str += '</div>';
 
-	// Close Previous Popup
-	close();
-	// Append to Body
-	body.insertAdjacentHTML('beforeend', str);
+		// Close Previous Popup
+		close();
+		// Append to Body
+		body.insertAdjacentHTML('beforeend', str);
 
-	// No Scroll
-	body.classList.add('noscroll');
+		// No Scroll
+		body.classList.add('noscroll');
 
-	// Add Handlers
-	addButtonHandlers();
-	// Use keydown because some special keys do not trigger keypress in Chrome
-	(config.keyResponse == true) && (document.addEventListener('keydown', x0pKeyHandler));
+		// Add Handlers
+		addButtonHandlers();
+		// Use keydown because some special keys do not trigger keypress in Chrome
+		(config.keyResponse == true) && (document.addEventListener('keydown', x0pKeyHandler));
 
-	// Auto Focus Input DOM
-	var inputDOM = document.getElementById('x0p-input');
-	(inputType != null) && (inputDOM.focus());
+		// Auto Focus Input DOM
+		var inputDOM = document.getElementById('x0p-input');
+		(inputType != null) && (inputDOM.focus());
 
-	// Auto Close Timer
-	(config.autoClose != null) && (timeoutFunc = setTimeout(function() {
-		closeAndTriggerCallback('timeout');
-	}, config.autoClose));
+		// Auto Close Timer
+		(config.autoClose != null) && (timeoutFunc = setTimeout(function() {
+			closeAndTriggerCallback('timeout');
+		}, config.autoClose));
+	});
+
+	return pop;
 
 	// Construction Helpers
 	function generateStyle() {
@@ -276,7 +284,10 @@ x0popup = x0p = function() {
 		} else {
 			close();
 		}
-		(callback != null) && (callback(buttonType, inputDOM == null ? null : inputDOM.value));
+		promiseResolve({
+			button: buttonType, 
+			text: inputDOM == null ? null : inputDOM.value
+		});
 	}
 
 	function generateButtonText(button) {

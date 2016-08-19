@@ -18,6 +18,7 @@ var x0pDefaultConfig = {
 	inputPlaceholder: null,
 	inputColor: null,
 	inputValidator: null,
+	inputPromise: null,
 	showCancelButton: null,
 	buttons: null,
 	autoClose: null,
@@ -268,15 +269,31 @@ x0popup = x0p = function() {
 		}
 
 		var inputDOM = document.getElementById('x0p-input');
-		if(buttonType != 'cancel' && inputType != null && inputDOM != null && config.inputValidator != null) {
-			var msg = config.inputValidator(buttonType, inputDOM.value);
-			if(msg != null) {
-				removeElementById('x0p-input-error');
-				var anchor = document.getElementById('x0p-input-anchor');
-				anchor.insertAdjacentHTML('beforeend', '<div id="x0p-input-error" class="error">' + msg + '</div>');
+		if(buttonType != 'cancel' && inputType != null && inputDOM != null) {
+			if(config.inputPromise != null) {
+				config.inputPromise(buttonType, inputDOM.value).then(function(msg) {
+					if(msg != null) {
+						showInputError(msg);
+					} else {
+						triggerCallback(buttonType, showLoading);
+					}
+				});
+
 				return;
+			} else if(config.inputValidator != null) {
+				var msg = config.inputValidator(buttonType, inputDOM.value);
+				if(msg != null) {
+					showInputError(msg);
+					return;
+				}
 			}
 		}
+
+		triggerCallback(buttonType, showLoading);
+	}
+
+	function triggerCallback(buttonType, showLoading) {
+		var inputDOM = document.getElementById('x0p-input');
 
 		clearTimeout(timeoutFunc);
 		if(showLoading == true) {
@@ -284,10 +301,21 @@ x0popup = x0p = function() {
 		} else {
 			close();
 		}
+
+		var inputText = (inputDOM == null ? null : inputDOM.value);
+
+		(callback != null) && (callback(buttonType, inputText));
+
 		promiseResolve({
 			button: buttonType, 
-			text: inputDOM == null ? null : inputDOM.value
+			text: inputText
 		});
+	}
+
+	function showInputError(msg) {
+		removeElementById('x0p-input-error');
+		var anchor = document.getElementById('x0p-input-anchor');
+		anchor.insertAdjacentHTML('beforeend', '<div id="x0p-input-error" class="error">' + msg + '</div>');
 	}
 
 	function generateButtonText(button) {

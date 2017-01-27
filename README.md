@@ -49,4 +49,4 @@ You can see full tutorial and document on [x0popup](http://gao-sun.github.io/x0p
 
 Please leave an issue if you find any bugs, I will fix it ASAP.
 
-If you have any new ideas, feel free to make a pull request and wait for accpetance.
+If you have any new ideas, feel free to make a pull request and wait for acceptance.

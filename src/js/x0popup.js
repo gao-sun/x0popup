@@ -46,7 +46,7 @@ x0popup = x0p = function() {
 		config.title = arguments[0];
 		(arguments[1] != undefined) && (config.text = arguments[1]);
 		(arguments[2] != undefined) && (config.type = arguments[2]);
-		if(arguments[3] != undefined) { 
+		if(arguments[3] != undefined) {
 			(typeof(arguments[3]) == 'boolean') ? (config.overlayAnimation = arguments[3]) : (callback = arguments[3]);
 		}
 	} else { // specific
@@ -62,7 +62,7 @@ x0popup = x0p = function() {
 	*	Icon Priority: icon > type
 	*	Input Type Priority: inputType > type
 	*	Buttons: buttons > showCancelButton > type
-	**/	
+	**/
 	var str = '';
 	var textOnly = (config.icon == null && (config.type == 'text' || config.type == 'input'));
 	var inputType = (config.inputType != null ? config.inputType : (config.type == 'input' ? 'text' : null));
@@ -229,7 +229,7 @@ x0popup = x0p = function() {
 			// Update default index
 			(buttons[i].default == true) && (defaultIndex = i);
 		}
-		
+
 		if(config.keyResponse && buttons.length > 0) {
 			var lastButton = document.getElementById('x0p-button-' + (buttons.length - 1));
 
@@ -304,11 +304,12 @@ x0popup = x0p = function() {
 
 		var inputText = (inputDOM == null ? null : inputDOM.value);
 
-		(callback != null) && (callback(buttonType, inputText));
+		(callback != null) && (callback(buttonType, inputText, close));
 
 		promiseResolve({
-			button: buttonType, 
-			text: inputText
+			button: buttonType,
+			text: inputText,
+			close: close
 		});
 	}
 

@@ -4,6 +4,8 @@
 
 An alternative to original alert, confirm and prompt.
 
+## If you are looking for a Promise-based unified UI library for all windows/modals/notifcations/pushes, please check my new project [Windowise](https://github.com/gao-sun/windowise)
+
 **Light** - Just 4KB (js + css, after gzipped), no dependency.
 
 **Graceful** - Flat design, suits for all devices.
